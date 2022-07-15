@@ -1,0 +1,12 @@
+.container {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: 800;
+    color: antiquewhite;
+    text-shadow: 1px 1px 2px #050404, 0 0 1em #69174e, 0 0 0.2em rgb(4, 4, 14);
+}
