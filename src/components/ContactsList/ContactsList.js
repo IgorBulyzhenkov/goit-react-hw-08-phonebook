@@ -1,5 +1,4 @@
 import { BsPersonSquare, BsTrashFill } from 'react-icons/bs';
-// import PropTypes from 'prop-types';
 import s from './ContactsList.module.css';
 import { connect } from 'react-redux';
 import actionDeleteContact from '../../redux/contact-action';
@@ -54,13 +53,4 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
 
-// ContactsList.propTypes = {
-//   onClickDelete: PropTypes.func.isRequired,
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     })
-//   ).isRequired,
-// };
+
