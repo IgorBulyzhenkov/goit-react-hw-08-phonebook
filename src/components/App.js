@@ -4,7 +4,7 @@ import ContactsList from 'components/ContactsList/ContactsList';
 import Container from './Container/Container';
 import FilterContacts from './FilterContacts/FilterContacts';
 import s from './/App.module.css';
-import { useState, useEffect, useRef } from 'react';
+// import { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 
 
