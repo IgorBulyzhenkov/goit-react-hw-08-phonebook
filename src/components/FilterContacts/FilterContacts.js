@@ -1,23 +1,37 @@
-import PropTypes from 'prop-types';
+
 import { FiSearch } from 'react-icons/fi';
 import s from './FilterContacts.module.css';
+import { connect } from 'react-redux';
+import actionFilter from '../../redux/contact-action';
 
-const FilterContacts = ({ onChange }) => {
+const { filterContact } = actionFilter;
+
+const FilterContacts = ({ visible, onChange }) => {
   return (
     <>
       <label className={s.label}>
         Find contacts by name
-        <input type="text" onChange={onChange} className={s.input} />
-        <span className={ s.span}>
-          <FiSearch color='black'/>
+        <input
+          type="text"
+          value={visible}
+          onChange={onChange}
+          className={s.input}
+        />
+        <span className={s.span}>
+          <FiSearch color="black" />
         </span>
       </label>
     </>
   );
 };
 
-export default FilterContacts;
+const mapStateToProps = state => ({
+  visible: state.contacts.filter,
+});
 
-FilterContacts.propTypes = {
-  onChange: PropTypes.func.isRequired
-}
+const mapDispatchToProps = dispatch => ({
+  onChange: e => dispatch(filterContact(e.target.value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterContacts);
+
