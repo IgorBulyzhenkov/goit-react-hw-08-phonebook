@@ -1,15 +1,20 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { BsFillPersonPlusFill } from 'react-icons/bs';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './Phonebook.module.css';
 import { useState } from 'react';
 import actionAddContact from '../../redux/contact-action';
+import { getContacts } from 'redux/contacts-selector';
 
 const { addContact } = actionAddContact;
 
-function Phonebook({ contacts, onSaveSubmit }) {
+export default function Phonebook() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const contacts = useSelector(getContacts);
+
+  const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -47,7 +52,7 @@ function Phonebook({ contacts, onSaveSubmit }) {
 
     Notify.success(`${userName} is added to the list of contacts`);
 
-    onSaveSubmit(name, number);
+    dispatch(addContact(name, number));
     reset();
   };
 
@@ -88,14 +93,3 @@ function Phonebook({ contacts, onSaveSubmit }) {
     </>
   );
 }
-
-const mapStateToProps = state => ({
-  contacts: state.contacts.items,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onSaveSubmit: (name, number) => dispatch(addContact(name, number)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Phonebook);
-

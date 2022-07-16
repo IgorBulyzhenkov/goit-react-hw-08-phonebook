@@ -1,11 +1,14 @@
+import { useSelector } from 'react-redux';
 import Phonebook from './Phonebook/Phonebook';
 import ContactsList from 'components/ContactsList/ContactsList';
 import Container from './Container/Container';
 import FilterContacts from './FilterContacts/FilterContacts';
+import { getContacts } from 'redux/contacts-selector';
 import s from './/App.module.css';
-import { connect } from 'react-redux';
 
-function App({ contacts }) {
+export default function App() {
+  const contacts = useSelector(getContacts);
+
   return (
     <>
       <Container title="Phonebook">
@@ -25,9 +28,3 @@ function App({ contacts }) {
     </>
   );
 }
-
-const mapStateToProps = state => ({
-  contacts: state.contacts.items,
-});
-
-export default connect(mapStateToProps)(App);

@@ -1,20 +1,20 @@
-
 import { FiSearch } from 'react-icons/fi';
 import s from './FilterContacts.module.css';
-import { connect } from 'react-redux';
 import actionFilter from '../../redux/contact-action';
+import { useDispatch} from 'react-redux';
 
 const { filterContact } = actionFilter;
 
-const FilterContacts = ({ visible, onChange }) => {
+const FilterContacts = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <label className={s.label}>
         Find contacts by name
         <input
           type="text"
-          value={visible}
-          onChange={onChange}
+          onChange={e => dispatch(filterContact(e.target.value))}
           className={s.input}
         />
         <span className={s.span}>
@@ -25,13 +25,4 @@ const FilterContacts = ({ visible, onChange }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  visible: state.contacts.filter,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onChange: e => dispatch(filterContact(e.target.value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FilterContacts);
-
+export default FilterContacts;

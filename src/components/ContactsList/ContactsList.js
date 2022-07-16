@@ -1,11 +1,17 @@
 import { BsPersonSquare, BsTrashFill } from 'react-icons/bs';
 import s from './ContactsList.module.css';
-import { connect } from 'react-redux';
 import actionDeleteContact from '../../redux/contact-action';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts, getFilter } from 'redux/contacts-selector';
 
 const { deleteContact } = actionDeleteContact;
 
-const ContactsList = ({ filter, contacts, onClickDelete }) => {
+const ContactsList = () => {
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
+
+  const dispatch = useDispatch();
+
   const getVisibleFilterContacts = () => {
     const normalizeFilter = filter.toLowerCase();
     return contacts.filter(contact =>
@@ -30,7 +36,7 @@ const ContactsList = ({ filter, contacts, onClickDelete }) => {
               className={s.btn}
               type="button"
               onClick={() => {
-                onClickDelete(id);
+                dispatch(deleteContact(id));
               }}
             >
               <BsTrashFill />
@@ -42,15 +48,4 @@ const ContactsList = ({ filter, contacts, onClickDelete }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  contacts: state.contacts.items,
-  filter: state.contacts.filter,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onClickDelete: id => dispatch(deleteContact(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
-
-
+export default ContactsList;
