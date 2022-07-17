@@ -2,24 +2,14 @@ import { BsPersonSquare, BsTrashFill } from 'react-icons/bs';
 import s from './ContactsList.module.css';
 import actionDeleteContact from '../../redux/contact-action';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/contacts-selector';
+import { getVisibleFilterContacts } from 'redux/contacts-selector';
 
 const { deleteContact } = actionDeleteContact;
 
 const ContactsList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-
   const dispatch = useDispatch();
 
-  const getVisibleFilterContacts = () => {
-    const normalizeFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizeFilter)
-    );
-  };
-
-  const filterContacts = getVisibleFilterContacts();
+  const filterContacts = useSelector(getVisibleFilterContacts);
 
   return (
     <ul className={s.list}>
