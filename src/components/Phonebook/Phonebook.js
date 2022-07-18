@@ -3,12 +3,13 @@ import { BsFillPersonPlusFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './Phonebook.module.css';
 import { useState } from 'react';
-import actionAddContact from '../../redux/contact-action';
 import { getContacts } from 'redux/contacts-selector';
+import fetchApi from 'redux/contacts-operations';
 
-const { addContact } = actionAddContact;
+const { addContacts } = fetchApi;
 
 export default function Phonebook() {
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -52,7 +53,7 @@ export default function Phonebook() {
 
     Notify.success(`${userName} is added to the list of contacts`);
 
-    dispatch(addContact(name, number));
+    dispatch(addContacts({ name, number }));
     reset();
   };
 

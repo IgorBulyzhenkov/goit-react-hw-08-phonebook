@@ -1,32 +1,33 @@
 import { BsPersonSquare, BsTrashFill } from 'react-icons/bs';
 import s from './ContactsList.module.css';
-import actionDeleteContact from '../../redux/contact-action';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVisibleFilterContacts } from 'redux/contacts-selector';
+import fetchApi from 'redux/contacts-operations';
 
-const { deleteContact } = actionDeleteContact;
+const { deleteContacts } = fetchApi;
 
 const ContactsList = () => {
   const dispatch = useDispatch();
 
   const filterContacts = useSelector(getVisibleFilterContacts);
 
+
   return (
     <ul className={s.list}>
-      {filterContacts.map(({ id, name, number }) => {
+      {filterContacts.map(({ id, name, phone }) => {
         return (
           <li key={id} className={s.item}>
             <span className={s.span}>
               <BsPersonSquare />
             </span>
             <p className={s.text}>
-              {name} : {number}
+              {name} : {phone}
             </p>
             <button
               className={s.btn}
               type="button"
               onClick={() => {
-                dispatch(deleteContact(id));
+                dispatch(deleteContacts(id));
               }}
             >
               <BsTrashFill />

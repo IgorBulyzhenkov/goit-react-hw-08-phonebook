@@ -1,13 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Phonebook from './Phonebook/Phonebook';
 import ContactsList from 'components/ContactsList/ContactsList';
 import Container from './Container/Container';
 import FilterContacts from './FilterContacts/FilterContacts';
-import { getContacts } from 'redux/contacts-selector';
+import { getContacts, getError, getLoading } from 'redux/contacts-selector';
 import s from './/App.module.css';
+import fetchApi from 'redux/contacts-operations';
+import { useEffect } from 'react';
 
-export default function App() {
+const { fetchContacts } = fetchApi;
+
+function App() {
   const contacts = useSelector(getContacts);
+  const isLoading = useSelector(getLoading);
+  const err = useSelector(getError);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <>
@@ -16,8 +28,9 @@ export default function App() {
       </Container>
 
       <Container title="Contacts">
+        {err && <p>ERROR</p>}
         {!contacts?.length ? (
-          <p className={s.text}>Sorry , there are no contacts here .</p>
+          <p className={s.text}> Sorry , there are no contacts here .</p>
         ) : (
           <>
             <FilterContacts />
@@ -28,3 +41,5 @@ export default function App() {
     </>
   );
 }
+
+export default App;
