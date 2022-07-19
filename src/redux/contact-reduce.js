@@ -19,21 +19,21 @@ const filter = createReducer('', {
 
 const loading = createReducer(false, {
   [fetchContacts.pending]: () => true,
+  [fetchContacts.fulfilled]: () => false,
   [fetchContacts.rejected]: () => false,
   [deleteContacts.pending]: () => true,
+  [deleteContacts.fulfilled]: () => false,
   [deleteContacts.rejected]: () => false,
   [addContacts.pending]: () => true,
+  [addContacts.fulfilled]: () => false,
   [addContacts.rejected]: () => false,
 });
 
 const error = createReducer(null, {
-  [fetchContacts.fulfilled]: () => false,
   [fetchContacts.pending]: () => false,
   [fetchContacts.rejected]: (_, { payload }) => payload,
-  [deleteContacts.fulfilled]: () => false,
   [deleteContacts.pending]: () => false,
   [deleteContacts.rejected]: () => true,
-  [addContacts.fulfilled]: () => false,
   [addContacts.pending]: () => false,
   [addContacts.rejected]: () => true,
 });
