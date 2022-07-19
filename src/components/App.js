@@ -17,8 +17,6 @@ function App() {
   const isLoading = useSelector(getLoading);
   const err = useSelector(getError);
 
-  console.log(isLoading);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

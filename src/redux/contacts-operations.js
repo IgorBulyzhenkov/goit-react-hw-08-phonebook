@@ -24,7 +24,11 @@ const deleteContacts = createAsyncThunk('contacts/deleteContacts', async id => {
 const addContacts = createAsyncThunk(
   'contacts/addContacts',
   async ({ name, number }) => {
-    const contact = { name: name, phone: number };
+    const contact = {
+      name: name,
+      phone: number,
+      createdAt: new Date().toISOString(),
+    };
     const result = await axios.post('/contacts', contact);
     return result.data;
   }

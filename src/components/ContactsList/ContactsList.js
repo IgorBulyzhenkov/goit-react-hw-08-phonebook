@@ -9,8 +9,7 @@ const { deleteContacts } = fetchApi;
 const ContactsList = () => {
   const dispatch = useDispatch();
 
-  const filterContacts = useSelector(getVisibleFilterContacts);
-
+  const filterContacts = useSelector(state => getVisibleFilterContacts(state));
 
   return (
     <ul className={s.list}>
