@@ -3,8 +3,8 @@ import { BsFillPersonPlusFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './Phonebook.module.css';
 import { useState } from 'react';
-import { getContacts } from 'redux/contacts-selector';
-import fetchApi from 'redux/contacts-operations';
+import { getContacts } from 'redux/contacts/contacts-selector';
+import fetchApi from 'redux/contacts/contacts-operations';
 
 const { addContacts } = fetchApi;
 

@@ -1,0 +1,27 @@
+.userMenu {
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    margin-bottom: 10px;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: antiquewhite;
+    text-shadow: 1px 1px 2px #1a1717, 0 0 1em #69174e, 0 0 0.2em blue;
+}
+
+.button {
+    color: black;
+    background-color: beige;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 15px;
+    transform: scale(1);
+    font-size: 15px;
+    box-shadow: 0px 7px 13px 5px rgb(24 32 26 / 62%);
+}

@@ -1,6 +1,6 @@
 import { FiSearch } from 'react-icons/fi';
 import s from './FilterContacts.module.css';
-import filterContact from '../../redux/contact-action';
+import filterContact from '../../../redux/contacts/contact-action';
 import { useDispatch } from 'react-redux';
 
 const FilterContacts = () => {

@@ -1,4 +1,3 @@
-// import dataUser from './dataUser.json';
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import filterContact from './contact-action';

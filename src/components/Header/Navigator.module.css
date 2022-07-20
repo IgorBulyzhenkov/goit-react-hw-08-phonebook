@@ -1,0 +1,30 @@
+.logIn {
+    margin: 10px;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.singUp {
+    margin: 10px;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.Navigator__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.Navigator__item {
+    height: 20px;
+    min-width: 50px;
+}
+
+.Navigator__item:not(:last-child) {
+    margin-right: 15px;
+}

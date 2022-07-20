@@ -1,8 +1,8 @@
 import { BsPersonSquare, BsTrashFill } from 'react-icons/bs';
 import s from './ContactsList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVisibleFilterContacts } from 'redux/contacts-selector';
-import fetchApi from 'redux/contacts-operations';
+import { getVisibleFilterContacts } from 'redux/contacts/contacts-selector';
+import fetchApi from 'redux/contacts/contacts-operations';
 
 const { deleteContacts } = fetchApi;
 
