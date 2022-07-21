@@ -1,4 +1,5 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
+/* bring in normalize.css styles */
 
 body {
   padding-bottom: 20px;
@@ -9,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(closest-side, #d5d5d6, #6e1666);
+  background-color: rgba(207, 185, 155, 0.877);
 }
 
 code {

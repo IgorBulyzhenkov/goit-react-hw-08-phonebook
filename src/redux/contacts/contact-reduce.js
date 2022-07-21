@@ -19,22 +19,22 @@ const filter = createReducer('', {
 const loading = createReducer(false, {
   [fetchContacts.pending]: () => true,
   [fetchContacts.fulfilled]: () => false,
-  [fetchContacts.rejected]: () => false,
+  [fetchContacts.rejected]: () => null,
   [deleteContacts.pending]: () => true,
   [deleteContacts.fulfilled]: () => false,
-  [deleteContacts.rejected]: () => false,
+  [deleteContacts.rejected]: () => null,
   [addContacts.pending]: () => true,
   [addContacts.fulfilled]: () => false,
-  [addContacts.rejected]: () => false,
+  [addContacts.rejected]: () => null,
 });
 
 const error = createReducer(null, {
   [fetchContacts.pending]: () => false,
-  [fetchContacts.rejected]: (_, { payload }) => payload,
+  [fetchContacts.rejected]: (_, action) => action.error.message,
   [deleteContacts.pending]: () => false,
-  [deleteContacts.rejected]: () => true,
+  [deleteContacts.rejected]: (_, action) => action.error.message,
   [addContacts.pending]: () => false,
-  [addContacts.rejected]: () => true,
+  [addContacts.rejected]: (_, action) => action.error.message,
 });
 
 export default combineReducers({

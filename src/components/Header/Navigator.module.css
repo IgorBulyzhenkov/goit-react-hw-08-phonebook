@@ -3,6 +3,8 @@
     text-decoration: none;
     padding: 5px;
     border-radius: 5px;
+    background-color: rgb(97, 67, 92);
+    transform: scale(1);
 }
 
 .singUp {
@@ -23,6 +25,11 @@
 .Navigator__item {
     height: 20px;
     min-width: 50px;
+}
+
+.Navigator__item:hover,
+.Navigator__item:focus {
+    transform: scale(1.1);
 }
 
 .Navigator__item:not(:last-child) {

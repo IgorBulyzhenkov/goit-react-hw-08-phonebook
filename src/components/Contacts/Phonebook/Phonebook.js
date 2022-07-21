@@ -87,7 +87,6 @@ export default function Phonebook() {
           />
         </label>
         <button type="submit" className={s.btn}>
-          {' '}
           <BsFillPersonPlusFill />
         </button>
       </form>

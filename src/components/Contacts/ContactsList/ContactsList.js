@@ -13,14 +13,14 @@ const ContactsList = () => {
 
   return (
     <ul className={s.list}>
-      {filterContacts.map(({ id, name, phone }) => {
+      {filterContacts.map(({ id, name, number }) => {
         return (
           <li key={id} className={s.item}>
             <span className={s.span}>
               <BsPersonSquare />
             </span>
             <p className={s.text}>
-              {name} : {phone}
+              {name} : {number}
             </p>
             <button
               className={s.btn}

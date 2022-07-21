@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import s from './Register.module.css';
 import user from '../../redux/user/user-operation';
 
 const { registrationNewUser } = user;
@@ -14,6 +15,9 @@ function Register() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(registrationNewUser({ name, email, password }));
+    setName('');
+    setEmail('');
+    setPassword('');
   };
 
   const handleChange = ({ target: { name, value } }) => {
@@ -33,39 +37,47 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name
-        <input
-          type="name"
-          name="name"
-          value={name}
-          required
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Email
-        <input
-          type="mail"
-          name="email"
-          value={email}
-          required
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          name="password"
-          value={password}
-          required
-          onChange={handleChange}
-        />
-      </label>
-      <button type='submit'>Registration</button>
-    </form>
+    <div className={s.registr}>
+      <h2 className={s.title}>Regisration</h2>
+      <form onSubmit={handleSubmit} className={s.form}>
+        <label className={s.label}>
+          Name
+          <input
+            type="name"
+            name="name"
+            value={name}
+            required
+            onChange={handleChange}
+            className={s.input}
+          />
+        </label>
+        <label className={s.label}>
+          Email
+          <input
+            type="mail"
+            name="email"
+            value={email}
+            required
+            onChange={handleChange}
+            className={s.input}
+          />
+        </label>
+        <label className={s.label}>
+          Password
+          <input
+            type="password"
+            name="password"
+            value={password}
+            required
+            onChange={handleChange}
+            className={s.input}
+          />
+        </label>
+        <button type="submit" className={s.btn}>
+          Registration
+        </button>
+      </form>
+    </div>
   );
 }
 
