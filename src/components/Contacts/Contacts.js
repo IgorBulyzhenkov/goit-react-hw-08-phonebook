@@ -12,13 +12,11 @@ import {
   getLoading,
 } from '../../redux/contacts/contacts-selector';
 
-
 const { fetchContacts } = fetchApi;
 
 function Contacts() {
   const contacts = useSelector(getContacts);
   const isLoading = useSelector(getLoading);
- 
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -40,14 +38,13 @@ function Contacts() {
               width={70}
               secondaryColor="grey"
             />
-            {/* <RotatingLines width="100" /> */}
           </div>
         )}
         {!contacts?.length && !isLoading ? (
           <p className={s.text}> Sorry , there are no contacts here .</p>
         ) : (
           <>
-            <FilterContacts />
+            {!contacts?.length ? null : <FilterContacts />}
             <ContactsList />
           </>
         )}
