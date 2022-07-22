@@ -9,13 +9,16 @@ import Login from './Login/Login';
 import userFetch from '../redux/user/user-operation';
 import PrivetRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
-import { getIsFetchingCurrent } from 'redux/user/user-selector';
+import { getIsFetchingCurrent, getName } from 'redux/user/user-selector';
 
 const { fetchCurrentUser } = userFetch;
 
 function App() {
   const isFetching = useSelector(getIsFetchingCurrent);
+  const userName = useSelector(getName);
   const dispatch = useDispatch();
+
+  console.log(Boolean(userName));
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -50,7 +53,9 @@ function App() {
               </PrivetRoute>
             }
           />
-          {!isFetching && <Route path="*" element={<Register />} />}
+          {!isFetching && (
+            <Route path="*" element={userName ? <Contacts /> : <Register />} />
+          )}
         </Routes>
       )}
     </>

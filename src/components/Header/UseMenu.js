@@ -2,14 +2,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import s from './UserMenu.module.css';
 import { getName } from '../../redux/user/user-selector';
 import userLogOut from '../../redux/user/user-operation';
+import { useNavigate } from 'react-router-dom';
 const { logOutUser } = userLogOut;
 
 function UserMenu() {
   const userName = useSelector(getName);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     dispatch(logOutUser());
+    navigate('/register');
   };
 
   return (
