@@ -12,15 +12,17 @@ import {
   getLoading,
 } from '../../redux/contacts/contacts-selector';
 
+
 const { fetchContacts } = fetchApi;
 
 function Contacts() {
   const contacts = useSelector(getContacts);
   const isLoading = useSelector(getLoading);
+ 
 
   const dispatch = useDispatch();
   useEffect(() => {
-      dispatch(fetchContacts());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
