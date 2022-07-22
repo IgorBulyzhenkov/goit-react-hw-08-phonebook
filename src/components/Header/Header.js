@@ -11,13 +11,16 @@ function Header() {
   return (
     <>
       <header className={s.header}>
-        {!isLogin ? (
-          <nav className={s.nav}>
-            <Navigator />
-          </nav>
-        ) : (
-          <UserMenu />
-        )}
+        <div className={s.header__container}>
+          {!isLogin ? (
+            <nav className={s.nav}>
+              <Navigator />
+            </nav>
+          ) : (
+            <UserMenu />
+          )}
+          <h1 className={s.title}>PhoneBook</h1>
+        </div>
       </header>
       <Outlet />
     </>

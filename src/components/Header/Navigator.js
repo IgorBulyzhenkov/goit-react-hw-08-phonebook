@@ -17,12 +17,12 @@ function Navigator() {
   return (
     <ul className={s.Navigator__list}>
       <li className={s.Navigator__item}>
-        <StyledLink to="/login" className={s.logIn}>
+        <StyledLink to="login" className={s.logIn}>
           log in
         </StyledLink>
       </li>
       <li className={s.Navigator__item}>
-        <StyledLink to="/register" className={s.singUp}>
+        <StyledLink to="register" className={s.singUp}>
           sing up
         </StyledLink>
       </li>
