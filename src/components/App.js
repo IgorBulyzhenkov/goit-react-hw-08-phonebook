@@ -1,7 +1,6 @@
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './Header/Header';
 import Contacts from './Contacts/Contacts';
@@ -17,20 +16,17 @@ const { fetchCurrentUser } = userFetch;
 function App() {
   const isFetching = useSelector(getIsFetchingCurrent);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const kickUser = () => navigate('/register');
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
-    kickUser();
   }, [dispatch]);
 
   return (
-    !isFetching && (
-      <Routes>
-        <Route path="/" element={<Header />}>
+    <>
+      <Header />
+      {!isFetching && (
+        <Routes>
           <Route
-            index
             path="register"
             element={
               <PublicRoute>
@@ -54,10 +50,10 @@ function App() {
               </PrivetRoute>
             }
           />
-        </Route>
-        {!isFetching && <Route path="*" element={<p> Not found </p>} />}
-      </Routes>
-    )
+          {!isFetching && <Route path="*" element={<Register />} />}
+        </Routes>
+      )}
+    </>
   );
 }
 

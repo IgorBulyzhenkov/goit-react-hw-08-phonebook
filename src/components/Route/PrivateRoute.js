@@ -4,7 +4,6 @@ import { getInLoggedIn } from '../../redux/user/user-selector';
 
 function PrivetRoute({ children, redirect = '/register' }) {
   const isLoggedIn = useSelector(getInLoggedIn);
-
   return isLoggedIn ? children : <Navigate to={redirect} replace />;
 }
 
