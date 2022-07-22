@@ -1,5 +1,5 @@
 import s from './Contacts.module.css';
-import { Rings } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 import { useSelector, useDispatch } from 'react-redux';
 import Phonebook from './Phonebook/Phonebook';
 import ContactsList from './ContactsList/ContactsList';
@@ -32,7 +32,13 @@ function Contacts() {
       <Container title="Contacts" className={s.contacts}>
         {isLoading && (
           <div className={s.Loader}>
-            <Rings color="#1b181b" height={80} width={80} />
+            <Oval
+              color="#1b181b"
+              height={70}
+              width={70}
+              secondaryColor="grey"
+            />
+            {/* <RotatingLines width="100" /> */}
           </div>
         )}
         {!contacts?.length && !isLoading ? (
