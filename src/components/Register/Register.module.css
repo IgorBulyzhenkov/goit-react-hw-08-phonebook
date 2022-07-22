@@ -1,5 +1,7 @@
 .registr {
     text-align: center;
+    width: 500px;
+    margin-left: 230px;
 }
 
 .title {
@@ -12,8 +14,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    margin: 0 auto;
+    text-align: center;
 }
 
 .label {

@@ -5,11 +5,12 @@ import s from './Phonebook.module.css';
 import { useState } from 'react';
 import { getContacts } from 'redux/contacts/contacts-selector';
 import fetchApi from 'redux/contacts/contacts-operations';
+import action from 'redux/contacts/contact-action';
 
+const { reset: errorReset } = action;
 const { addContacts } = fetchApi;
 
 export default function Phonebook() {
-
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -44,14 +45,14 @@ export default function Phonebook() {
   const handleSubmit = e => {
     e.preventDefault();
 
+    dispatch(errorReset());
+
     const userName = e.target[0].value;
     const findUser = getFindContacts(userName);
 
     if (findUser) {
-      return Notify.failure(`${findUser} is already in contacts`);
+      return Notify.warning(`${findUser} is already in contacts`);
     }
-
-    Notify.success(`${userName} is added to the list of contacts`);
 
     dispatch(addContacts({ name, number }));
     reset();

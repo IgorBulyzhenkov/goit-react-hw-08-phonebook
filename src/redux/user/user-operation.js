@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import axios from 'axios';
 import { token } from '../axios';
 
 const registrationNewUser = createAsyncThunk(
   'user/registrationNewUser',
 
-  async ({ name, email, password }, { rejectWithValue }) => {
+  async ({ name, email, password, reset }, { rejectWithValue }) => {
     const body = {
       name,
       email,
@@ -14,24 +15,29 @@ const registrationNewUser = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signup', body);
       token.set(data.token);
+
+      reset();
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      Notify.failure(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 const logInUser = createAsyncThunk(
   'user/logInUser',
-  async ({ email, password }, { rejectWithValue }) => {
+  async ({ email, password, reset }, { rejectWithValue }) => {
     const body = { email, password };
 
     try {
       const { data } = await axios.post('/users/login', body);
       token.set(data.token);
+      reset();
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      Notify.failure(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -43,7 +49,8 @@ const logOutUser = createAsyncThunk(
       await axios.post('/users/logout');
       token.unset();
     } catch (error) {
-      rejectWithValue(error);
+      Notify.failure(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -60,7 +67,8 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('users/current');
       return data;
     } catch (error) {
-      rejectWithValue(error);
+      Notify.failure(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

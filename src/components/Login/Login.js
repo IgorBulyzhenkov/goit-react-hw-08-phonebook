@@ -23,11 +23,15 @@ function Login() {
     }
   };
 
+  const reset = () => {
+     setEmail('');
+     setPassword('');
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(logInUser({ email, password }));
-    setEmail('');
-    setPassword('');
+    dispatch(logInUser({ email, password, reset }));
+   
   };
 
   return (

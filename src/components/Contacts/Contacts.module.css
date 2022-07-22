@@ -1,0 +1,20 @@
+.text {
+    color: rgb(71, 59, 44);
+    text-shadow: 1px 1px 2px #c0bfbf, 0 0 1em #4d3d47, 0 0 0.2em rgb(108, 108, 124);
+}
+
+.contacts {
+    position: relative;
+}
+
+.Loader {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.container {
+    display: flex;
+    margin-left: 230px;
+}

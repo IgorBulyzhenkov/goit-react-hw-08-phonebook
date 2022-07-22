@@ -12,12 +12,15 @@ function Register() {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(registrationNewUser({ name, email, password }));
+  const reset = () => {
     setName('');
     setEmail('');
     setPassword('');
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(registrationNewUser({ name, email, password, reset }));
   };
 
   const handleChange = ({ target: { name, value } }) => {
