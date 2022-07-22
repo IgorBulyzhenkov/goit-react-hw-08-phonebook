@@ -18,8 +18,6 @@ function App() {
   const userName = useSelector(getName);
   const dispatch = useDispatch();
 
-  console.log(Boolean(userName));
-
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
