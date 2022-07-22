@@ -18,8 +18,6 @@ function App() {
   const isFetching = useSelector(getIsFetchingCurrent);
   const dispatch = useDispatch();
 
-
-  console.log('isFetching >>>>', isFetching);
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);

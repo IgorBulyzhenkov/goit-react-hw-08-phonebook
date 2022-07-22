@@ -9,7 +9,6 @@ const { filterContact } = action;
 const FilterContacts = () => {
   const dispatch = useDispatch();
   const isFetching = useSelector(getIsFetchingCurrent);
-console.log(isFetching);
 
 
   return (
