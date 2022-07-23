@@ -23,9 +23,9 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
-      <Header />
-      {!isFetching && (
+    !isFetching && (
+      <>
+        <Header />
         <Routes>
           <Route
             path="register"
@@ -55,8 +55,8 @@ function App() {
             <Route path="*" element={userName ? <Contacts /> : <Register />} />
           )}
         </Routes>
-      )}
-    </>
+      </>
+    )
   );
 }
 

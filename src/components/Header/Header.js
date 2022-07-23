@@ -1,4 +1,3 @@
-import { Outlet } from 'react-router-dom';
 import s from './Header.module.css';
 import Navigator from './Navigator';
 import UserMenu from './UseMenu';
@@ -22,7 +21,6 @@ function Header() {
           <h1 className={s.title}>PhoneBook</h1>
         </div>
       </header>
-      <Outlet />
     </>
   );
 }
