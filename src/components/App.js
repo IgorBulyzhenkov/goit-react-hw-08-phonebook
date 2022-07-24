@@ -8,10 +8,6 @@ import userFetch from '../redux/user/user-operation';
 import PrivetRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import { getIsFetchingCurrent, getName } from 'redux/user/user-selector';
-// import Header from './Header/Header';
-// import Contacts from './Contacts/Contacts';
-// import Register from './Register/Register';
-// import Login from './Login/Login';
 
 const Header = lazy(() => {
  return import('./Header/Header' /* webpackChunkName: "Header" */);
