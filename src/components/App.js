@@ -9,18 +9,18 @@ import PrivetRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 import { getIsFetchingCurrent, getName } from 'redux/user/user-selector';
 
-const Header = lazy(() => {
- return import('./Header/Header' /* webpackChunkName: "Header" */);
-});
-const Contacts = lazy(() => {
-  return import('./Contacts/Contacts' /* webpackChunkName: "Contacts" */);
-});
-const Register = lazy(() => {
-  return import('./Register/Register' /* webpackChunkName: "Register" */);
-});
-const Login = lazy(() => {
-  return import('./Login/Login' /* webpackChunkName: "Login" */);
-});
+const Header = lazy(() =>
+  import('./Header/Header' /* webpackChunkName: "Header" */)
+);
+const Contacts = lazy(() =>
+  import('./Contacts/Contacts' /* webpackChunkName: "Contacts" */)
+);
+const Register = lazy(() =>
+  import('./Register/Register' /* webpackChunkName: "Register" */)
+);
+const Login = lazy(() =>
+  import('./Login/Login' /* webpackChunkName: "Login" */)
+);
 
 const { fetchCurrentUser } = userFetch;
 
