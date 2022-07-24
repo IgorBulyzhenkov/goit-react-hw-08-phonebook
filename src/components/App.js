@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import s from './App.module.css';
 import { Oval } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,16 +14,16 @@ import { getIsFetchingCurrent, getName } from 'redux/user/user-selector';
 // import Login from './Login/Login';
 
 const Header = lazy(() => {
-  import('./Header/Header' /* webpackChunkName: "Header" */);
+ return import('./Header/Header' /* webpackChunkName: "Header" */);
 });
 const Contacts = lazy(() => {
-  import('./Contacts/Contacts' /* webpackChunkName: "Contacts" */);
+  return import('./Contacts/Contacts' /* webpackChunkName: "Contacts" */);
 });
 const Register = lazy(() => {
-  import('./Register/Register' /* webpackChunkName: "Register" */);
+  return import('./Register/Register' /* webpackChunkName: "Register" */);
 });
 const Login = lazy(() => {
-  import('./Login/Login' /* webpackChunkName: "Login" */);
+  return import('./Login/Login' /* webpackChunkName: "Login" */);
 });
 
 const { fetchCurrentUser } = userFetch;
@@ -42,40 +42,47 @@ function App() {
       <Oval color="#1b181b" height={70} width={70} secondaryColor="grey" />
     </div>
   ) : (
-    <>
+    <Suspense>
       <Header />
-      <Suspense>
-        <Routes>
+      <Routes>
+        <Route
+          path="register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="contacts"
+          element={
+            <PrivetRoute>
+              <Contacts />
+            </PrivetRoute>
+          }
+        />
+        {!isFetching && (
           <Route
-            path="register"
+            path="*"
             element={
-              <PublicRoute>
-                <Register />
-              </PublicRoute>
+              userName ? (
+                <Navigate to="/contacts" />
+              ) : (
+                <Navigate to="/register" />
+              )
             }
           />
-          <Route
-            path="login"
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="contacts"
-            element={
-              <PrivetRoute>
-                <Contacts />
-              </PrivetRoute>
-            }
-          />
-          {!isFetching && (
-            <Route path="*" element={userName ? <Contacts /> : <Register />} />
-          )}
-        </Routes>
-      </Suspense>
-    </>
+        )}
+      </Routes>
+    </Suspense>
   );
 }
 
