@@ -17,7 +17,7 @@ function UserMenu() {
 
   return (
     <div className={s.userMenu}>
-      <h2 className={s.text}> Добро пожаловать , {userName}</h2>
+      <h2 className={s.text}> Welcome , {userName} !</h2>
       <button type="button" className={s.button} onClick={handleClick}>
         log out
       </button>
